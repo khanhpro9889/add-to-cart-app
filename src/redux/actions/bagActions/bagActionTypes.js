@@ -1,0 +1,3 @@
+export const FETCH_BAG = "FETCH_BAG";
+export const FETCH_BAG_SUCCESS = "FETCH_BAG_SUCCESS";
+export const FETCH_BAG_ERROR = "FETCH_BAG_ERROR";
