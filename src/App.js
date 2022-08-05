@@ -1,8 +1,9 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { addToCart, deleteFromCart, addQuantity, removeQuantity } from './redux/actions/cartActions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBag } from './redux/actions/bagActions/bagActions';
+//import { fetchBag } from './redux/actions/bagActions/bagActions';
+import { fetchBagApi } from './redux/actions/bagActions/bagActions';
 
 import React from 'react'
 
@@ -12,7 +13,7 @@ function App() {
   const bag = useSelector((store) => store.bagReducer);
 
   useEffect(() => {
-    dispatch(fetchBag());
+    dispatch(fetchBagApi());
   }, [])
 
   const addToCartFunc = (item) => {
@@ -50,26 +51,28 @@ function App() {
         </div>
         <hr />
         <div><h2>Cart</h2></div>
-        {
-          cart && cart.items.map(i => {
-            return (
-              <div>
-                <div>{i.item.name}</div>
-                <div>Quanity: {i.quantity}</div>
-                <button onClick={() => {
-                  deleteFromCartFunc(i.item);
-                }}>Remove</button>
-                <button onClick={() => {
-                  addQuantityFunc(i.item);
-                }}>+</button>
-                <button onClick={() => {
-                  removeQuantityFunc(i.item);
-                }}>-</button>
-                <br />
-              </div>
-            )
-          })
-        }
+        <div className="container">
+          {
+            cart && cart.items.map(i => {
+              return (
+                <div className="box">
+                  <div>{i.item.name}</div>
+                  <div>Quanity: {i.quantity}</div>
+                  <button onClick={() => {
+                    deleteFromCartFunc(i.item);
+                  }}>Remove</button>
+                  <button onClick={() => {
+                    addQuantityFunc(i.item);
+                  }}>+</button>
+                  <button onClick={() => {
+                    removeQuantityFunc(i.item);
+                  }}>-</button>
+                  <br />
+                </div>
+              )
+            })
+          }
+        </div>
       </header>
     </div>
   );
