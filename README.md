@@ -1,3 +1,3 @@
-Add to cart application using:
-- Redux
-- Redux thunk
+- Using https://jsonplaceholder.typicode.com/ API to get Data
+- Using redux to store global state
+- Using redux-thunk to handle async process to get Data for initial global state
